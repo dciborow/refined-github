@@ -3,6 +3,7 @@ import {$} from 'select-dom';
 import * as pageDetect from 'github-url-detection';
 import GitPullRequestIcon from 'octicons-plain-react/GitPullRequest';
 import IssueOpenedIcon from 'octicons-plain-react/IssueOpened';
+import ReviewIcon from 'octicons-plain-react/Review';
 
 import features from '../feature-manager.js';
 import observe from '../helpers/selector-observer.js';
@@ -31,6 +32,12 @@ function addConversationLinks(repositoryLink: HTMLAnchorElement): void {
 				href={repositoryLink.href + '/pulls'}
 			>
 				<GitPullRequestIcon />
+			</a>
+			<a
+				className="Link--muted mr-3"
+				href={repositoryLink.href + '/reviews'}
+			>
+				<ReviewIcon />
 			</a>
 		</>,
 	);
@@ -70,6 +77,14 @@ function addSearchConversationLinks(repositoryLink: HTMLAnchorElement): void {
 						href={repositoryLink.href + '/pulls'}
 					>
 						<GitPullRequestIcon />
+					</a>
+				</li>
+				<li className="d-flex text-small ml-2">
+					<a
+						className="Link--muted"
+						href={repositoryLink.href + '/reviews'}
+					>
+						<ReviewIcon />
 					</a>
 				</li>
 			</>,

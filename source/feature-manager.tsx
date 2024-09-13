@@ -24,6 +24,7 @@ import {
 	_,
 } from './helpers/hotfix.js';
 import asyncForEach from './helpers/async-for-each.js';
+import reviewsTab from './features/reviews-tab.js';
 
 type CallerFunction = (callback: VoidFunction, signal: AbortSignal) => void | Promise<void> | Deinit;
 type FeatureInitResult = void | false;
@@ -350,6 +351,8 @@ void add('rgh-deduplicator' as FeatureID, {
 		$(_`turbo-frame`)?.append(<has-rgh-inner />); // #4567
 	},
 });
+
+void add(reviewsTab);
 
 const features = {
 	add,

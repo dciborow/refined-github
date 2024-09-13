@@ -122,12 +122,3 @@ void features.add(import.meta.url, {
 	],
 	init,
 });
-
-/*
-
-Test URLs:
-
-Releases: https://github.com/refined-github/refined-github
-Tags: https://github.com/python/cpython
-
-*/
