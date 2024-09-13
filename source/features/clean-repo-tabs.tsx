@@ -124,6 +124,20 @@ async function moveRareTabs(): Promise<void | false> {
 	onlyShowInDropdown('insights-tab');
 }
 
+async function updateReviewsTab(): Promise<void | false> {
+	const reviewsTab = await elementReady('[data-hotkey="g r"]');
+	if (!reviewsTab || mustKeepTab(reviewsTab)) {
+		return false;
+	}
+
+	const count = await getTabCount(reviewsTab);
+	if (count > 0) {
+		setTabCounter(reviewsTab, count);
+	} else {
+		onlyShowInDropdown('reviews-tab');
+	}
+}
+
 void features.add(import.meta.url, {
 	include: [
 		pageDetect.hasRepoHeader,
@@ -133,6 +147,7 @@ void features.add(import.meta.url, {
 		updateActionsTab,
 		updateWikiTab,
 		updateProjectsTab,
+		updateReviewsTab,
 	],
 }, {
 	include: [
@@ -147,15 +162,3 @@ void features.add(import.meta.url, {
 	deduplicate: 'has-rgh',
 	init: updateProjectsTab,
 });
-
-/*
-
-Test URLs:
-
-- Org with 0 projects: https://github.com/babel
-- Repo with 0 projects: https://github.com/babel/flavortown
-- Repo with 0 wiki: https://github.com/babel/babel-sublime-snippets
-- Repo with 0 actions: https://github.com/babel/jade-babel
-- Repo with some actions not on main branch: https://github.com/quatquatt/no-actions-menu
-
-*/
