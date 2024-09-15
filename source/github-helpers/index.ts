@@ -7,6 +7,7 @@ import * as pageDetect from 'github-url-detection';
 import mem from 'memoize';
 
 import {branchSelector} from './selectors.js';
+import {switchAccountIfNecessary} from '../helpers/account-utils.js';
 
 // This never changes, so it can be cached here
 export const getUsername = onetime(pageDetect.utils.getUsername);
