@@ -111,3 +111,16 @@ export const removeTextNodeContaining = (node: Text | ChildNode, expectation: Re
 	assertNodeContent(node, expectation);
 	node.remove();
 };
+
+// New DOM utility functions to interact with the account elements on the PR page
+export const getAccountElement = (): HTMLElement | null => {
+	return document.querySelector('.account-selector');
+};
+
+export const getCurrentAccountFromElement = (accountElement: HTMLElement): string => {
+	return accountElement.textContent?.trim() ?? '';
+};
+
+export const setAccountElement = (accountElement: HTMLElement, account: string): void => {
+	accountElement.textContent = account;
+};
