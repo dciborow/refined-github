@@ -24,6 +24,7 @@ import {
 	_,
 } from './helpers/hotfix.js';
 import asyncForEach from './helpers/async-for-each.js';
+import './features/copy-changes.js';
 
 type CallerFunction = (callback: VoidFunction, signal: AbortSignal) => void | Promise<void> | Deinit;
 type FeatureInitResult = void | false;
